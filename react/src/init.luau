@@ -1,10 +1,10 @@
---!strict
+--!nocheck
 
 local React = require(script.Parent.react)
 local GeneratedReactTypes = require(script.Parent.GeneratedReactTypes)
 
 type TypedReact = typeof(React) & {
-	Element: GeneratedReactTypes.Element
+	Element: GeneratedReactTypes.e
 }
 
 ;(React :: TypedReact).Element = function(type_)
@@ -15,6 +15,6 @@ type TypedReact = typeof(React) & {
 		end
 		return React.createElement(type_, props, children)
 	end
-end :: any
+end
 
 return React :: TypedReact
