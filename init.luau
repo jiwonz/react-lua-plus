@@ -52,7 +52,7 @@ local function generate(args: {
 	for _, name in classes :: { string } do
 		local function processClass(className, ptbl: {}?): boolean?
 			local class = db:FindClass(className)
-			if class then
+			if class and not table.find(class.Tags, "Deprecated") then
 				if not ptbl and table.find(class.Tags, "NotCreatable") then
 					return true
 				end
