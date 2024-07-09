@@ -1,12 +1,12 @@
 {
-	"name": "typed-react",
+	"name": "react-lua-plus",
 	"tree": {
 		"$className": "DataModel",
 		"ReplicatedStorage": {
 			"Packages": {
-				"$path": "typed-react/Packages",
-				"typed-react": {
-					"$path": "typed-react/src"
+				"$path": "react/Packages",
+				"react-lua-plus": {
+					"$path": "react/src"
 				},
 				"GeneratedReactTypes": {
 					"$path": "test/GeneratedReactTypes"

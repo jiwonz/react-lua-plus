@@ -1,9 +1,0 @@
-[dependencies]
-react = "jiwonz/typed-react@0.1.0"
-react-roblox = "jsdotlua/react-roblox@17.1.0"
-
-[package]
-name = "dongd5ng/react-lua-setup"
-realm = "shared"
-registry = "https://github.com/UpliftGames/wally-index"
-version = "0.1.0"
