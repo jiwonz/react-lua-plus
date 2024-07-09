@@ -4,6 +4,10 @@ A lune script that setups `react-lua` with some additional features
 # Note
 Not tested yet in game, only tested intellisenses for `createElement`
 
+# Requirements
+- `lune`
+- `wally`
+
 # Installation
 Use git submodule
 ```sh
@@ -30,6 +34,7 @@ end
 ```
 
 # Features
+- Simple to setup and use
 - Intellisenses for React `createElement` (but in alternative way called `Element`)
 - (wip) Event listening and children in props
 - (wip) Server-Sided Rendering (SSR) support for Roblox
