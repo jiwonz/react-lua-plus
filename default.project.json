@@ -1,0 +1,17 @@
+{
+	"name": "typed-react",
+	"tree": {
+		"$className": "DataModel",
+		"ReplicatedStorage": {
+			"Packages": {
+				"$path": "typed-react/Packages",
+				"typed-react": {
+					"$path": "typed-react/src"
+				},
+				"GeneratedReactTypes": {
+					"$path": "test/GeneratedReactTypes"
+				}
+			}
+		}
+	}
+}
