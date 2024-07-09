@@ -11,6 +11,9 @@
 				"GeneratedReactTypes": {
 					"$path": "test/GeneratedReactTypes"
 				}
+			},
+			"test": {
+				"$path": "test"
 			}
 		}
 	}
