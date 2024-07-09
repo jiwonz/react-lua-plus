@@ -19,17 +19,23 @@ local function generate(args: {
 })
 	local output = args.output or "GeneratedReactTypes"
 	local db = roblox.getReflectionDatabase()
-	local classes = args.classes and args.classes:split(",") or {
-		"Frame",
-		"TextLabel",
-		"TextBox",
-		"TextButton",
-		"ImageButton",
-		"ImageLabel",
-		"ViewportFrame",
-		"ScrollingFrame",
-		"CanvasGroup"
-	}
+	local classes = args.classes and args.classes:split(",") or db:GetClassNames()
+	-- {
+	-- -- 	"Frame",
+	-- -- 	"TextLabel",
+	-- -- 	"TextBox",
+	-- -- 	"TextButton",
+	-- -- 	"ImageButton",
+	-- -- 	"ImageLabel",
+	-- -- 	"ViewportFrame",
+	-- -- 	"ScrollingFrame",
+	-- -- 	"CanvasGroup",
+	-- -- }
+	-- for _, name in db:GetClassNames() do
+	-- 	if name:sub(1, 2) == "UI" then
+	-- 		table.insert(classes, name)
+	-- 	end
+	-- end
 	local base = "export type Element=%s;return nil"
 	local elementsType = {}
 	local datatypeMap = {
@@ -44,9 +50,12 @@ local function generate(args: {
 		Ref = "Instance"
 	}
 	for _, name in classes :: { string } do
-		local function processClass(className, ptbl: {}?)
+		local function processClass(className, ptbl: {}?): boolean?
 			local class = db:FindClass(className)
 			if class then
+				if not ptbl and table.find(class.Tags, "NotCreatable") then
+					return true
+				end
 				local props = ptbl or {}
 				for _, v in class.Properties do
 					if v.Scriptability ~= "Write" and v.Scriptability ~= "ReadWrite" then
@@ -63,8 +72,11 @@ local function generate(args: {
 					table.insert(elementsType, `(("{className}")->({"{"..table.concat(props).."}"})->(any))`)
 				end
 			end
+			return
 		end
-		processClass(name)
+		if processClass(name) then
+			continue
+		end
 	end
 	fs.writeDir(output)
 	fs.writeFile(output.."/init.luau", base:format(table.concat(elementsType, "&")))
