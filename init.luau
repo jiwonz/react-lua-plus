@@ -94,7 +94,7 @@ local function generate(args: {
 				end
 				local props = ptbl or {}
 				for _, v in class.Properties do
-					if v.Scriptability ~= "Write" and v.Scriptability ~= "ReadWrite" then
+					if v.Datatype ~= "RBXScriptSignal" and v.Scriptability ~= "Write" and v.Scriptability ~= "ReadWrite" then
 						continue
 					end
 					local typeName = datatypeMap[v.Datatype] or v.Datatype
